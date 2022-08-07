@@ -7,9 +7,10 @@ const crearUsuario = async(req, res = response) => {
 
     // console.log(req.body)
     const { name, email, password, rol } = req.body;
-    // console.log(name, email, password);
+    console.log(name, email, password, rol, "holaaa");
 
     try {
+      console.log(name, email, password, rol, "holaaa");
 
         // verificar el email si es que existe
         const usuario = await Usuario.findOne({ email })
@@ -32,11 +33,11 @@ const crearUsuario = async(req, res = response) => {
         const token = await generarJWT(dbUser.id, dbUser.name, dbUser.rol);
         //Crear usuario de base de datos
         await dbUser.save();
+        console.log(dbUser, "pasoo registro");
         //Generar respuesta exitosa
         return res.status(201).json({
             ok: true,
             uid: dbUser.id,
-            name: dbUser.name,
             token: token
         })
 
@@ -58,8 +59,9 @@ const loginUsuario = async(req, res) => {
 
         // verificar si es que existe el usuario
         const dbUser = await Usuario.findOne({ email: email })
-
+       console.log(dbUser);
         if (!dbUser) {
+          console.log(dbUser, "pasoo");
             return res.status(400).json({
                 ok: false,
                 msg: 'Su cuenta no existe'
