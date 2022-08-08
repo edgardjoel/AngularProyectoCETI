@@ -6,6 +6,8 @@ const validarJWT = (req,res=response,next)=>{
   // const token = req.header('x-token');
   const {token } = req.body;
 
+  console.log('El token esta '+token)
+
   if(!token){
 
     return res.status(401).json({
@@ -18,9 +20,12 @@ const validarJWT = (req,res=response,next)=>{
 
 
     const {uid}=jwt.verify(token,process.env.SECRET_JWT_SEED)
+    
 
 
   } catch (error) {
+    console.log('ERRORRR')
+    console.log(error)
     return res.status(401).json({
       ok:false,
       msg:'Token no válido!!!'

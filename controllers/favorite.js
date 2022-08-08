@@ -56,6 +56,28 @@ const crearFavorite = async(req, res = response) => {
 
 }
 
+
+const mostrarFavoritos = async(req, res = response) => {
+    
+        const {idUser} = req.params.idUser;
+        try {
+    
+            const favoritos = await Favorite.find({idUser });
+    
+            return res.json({
+                ok: true,
+                favoritos
+            })
+    
+        } catch (error) {
+            console.log(error);
+            return res.status(500).json({
+                ok: false,
+                msg: 'Por favor hable con el administrador'
+            })
+        }
+}
+
 // const loginUsuario = async(req, res) => {
 
 //     const { email, password } = req.body;
@@ -106,5 +128,5 @@ const crearFavorite = async(req, res = response) => {
 
 module.exports = {
   crearFavorite,
-  
+  mostrarFavoritos
 }

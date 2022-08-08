@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
- const { crearFavorite} = require('../controllers/favorite');
+ const { crearFavorite,mostrarFavoritos} = require('../controllers/favorite');
  const { validarCampos } = require('../middlewares/validar-campo');
 const { validarJWT } = require('../middlewares/validar-token');
 
@@ -35,12 +35,11 @@ router.post('/newFavorite', [
 
 //POST
 //Listar favorito
-// router.get('/', [
-//     check('token')
-//     .notEmpty().withMessage('Es token es obligatorio')
-//     .isEmail().withMessage("Email ingresado no es valido"),
-//     validarCampos
-// ], loginUsuario);
+ router.get('/:idUser', [
+     //check('token')
+     //.notEmpty().withMessage('Es token es obligatorio'),
+     validarCampos
+ ], mostrarFavoritos);
 
 
 
