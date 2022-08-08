@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
- const { crearFavorite,mostrarFavoritos} = require('../controllers/favorite');
+ const { crearFavorite,mostrarFavoritos,eliminarFavoritos} = require('../controllers/favorite');
  const { validarCampos } = require('../middlewares/validar-campo');
 const { validarJWT } = require('../middlewares/validar-token');
 
@@ -42,6 +42,15 @@ router.post('/newFavorite', [
  ], mostrarFavoritos);
 
 
+ router.delete('/deleteFavorite',[
+  check('IdCharacter')
+  .notEmpty().withMessage('El Id del personaje es obligatorio'),
+
+  check('IdUser')
+  .notEmpty().withMessage('El Id del usuario es obligatorio'),
+  
+  validarCampos
+ ],eliminarFavoritos)
 
 //para exportar rutas
 module.exports = router;

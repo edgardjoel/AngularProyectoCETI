@@ -3,10 +3,10 @@ const Favorite = require("../models/Favorite");
 const bcrypt = require('bcryptjs');
 const { generarJWT } = require('../helpers/jwt');
 const jwt = require("jsonwebtoken");
+
+
 const crearFavorite = async(req, res = response) => {
 
-    
-   
      const { IdCharacter, IdUser, nameCharacter, caracterUrlImagen } = req.body;
     
      
@@ -78,55 +78,41 @@ const mostrarFavoritos = async(req, res = response) => {
         }
 }
 
-// const loginUsuario = async(req, res) => {
+const eliminarFavoritos = async(req, res = response) => {
+    
+  const {IdCharacter,IdUser} = req.body
+  console.log(req.body)
+  try {
 
-//     const { email, password } = req.body;
-//     try {
+      const favoritos = await Favorite.deleteOne({IdCharacter,IdUser});
 
-//         // verificar si es que existe el usuario
-//         const dbUser = await Usuario.findOne({ email: email })
-//       // console.log(dbUser);
-//         if (!dbUser) {
-//             return res.status(400).json({
-//                 ok: false,
-//                 msg: 'Su cuenta no existe'
-//             })
-//         }
+      if (favoritos.deletedCount === 1) {
+        return res.status(200).json({
+          ok: true,
+          msg: 'El favorito se elimino correctamente'
+        })
+      } else {
+        return res.status(500).json({
+          ok: false,
+          msg: 'No se pudo eliminar'
+        })
+      }
 
-//         //Confirmar si el password hace match con la base de datos, devuelve true o false
-//         const validPassword = bcrypt.compareSync(password, dbUser.password);
-//         console.log(!validPassword);
-//         if (!validPassword) {
-//             return res.status(400).json({
-//                 ok: false,
-//                 smg: 'Su cuenta no existe'
-//             });
-//         }
-//         //Generar el jwt
-//         const token = await generarJWT(dbUser.id, dbUser.name, dbUser.rol);
-
-//         //Respuesta del servicio
-//         return res.json({
-//             ok: true,
-//             uid: dbUser.id,
-//             name: dbUser.name,
-//             token: token
-//         })
+  } catch (error) {
+      console.log(error);
+      return res.status(500).json({
+          ok: false,
+          msg: 'Por favor hable con el administrador'
+      })
+  }
+}
 
 
-//     } catch (error) {
-//         console.log(error);
-//         return res.status(500).json({
-//             ok: false,
-//             msg: "Hable con el administrador"
-//         })
-//     }
-
-// }
 
 
 
 module.exports = {
   crearFavorite,
-  mostrarFavoritos
+  mostrarFavoritos,
+  eliminarFavoritos
 }
