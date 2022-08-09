@@ -35,9 +35,15 @@ app.use('/api/auth', require('./routes/auth'));
 //Favorito
 app.use('/api/favorite', require('./routes/favorite'));
 
+//! PARA QUE TOME EL PUBLIC CON EL ARCHIVO DEL FRONTEND
+
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'public/index.html'))
 })
+
+
+
+
 //Levantar el servidor
 app.listen(process.env.PORT, () => {
     console.log(`Servidor levantando en el puerto ${process.env.PORT}`);
