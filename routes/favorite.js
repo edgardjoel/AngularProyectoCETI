@@ -10,6 +10,7 @@ const router = Router();
 //POST
 //controlador de esa ruta
 //crear un nuevo favorito
+//!Estructura: URL --> VALIDACIONES --> CONTROLADOR --> RESPUESTA
 router.post('/newFavorite', [
     
     validarJWT,

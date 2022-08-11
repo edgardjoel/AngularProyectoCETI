@@ -74,7 +74,7 @@ const loginUsuario = async(req, res) => {
         if (!validPassword) {
             return res.status(400).json({
                 ok: false,
-                smg: 'Su cuenta no existe'
+                smg: 'Contraseña incorrecta'
             });
         }
         //Generar el jwt

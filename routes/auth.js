@@ -36,8 +36,9 @@ router.post('/new', [
 ], crearUsuario);
 
 //POST
-//Login de usuario
+//! Login de usuario
 router.post('/', [
+
     check('email')
     .notEmpty().withMessage('El email es obligatorio')
     .isEmail().withMessage("Email ingresado no es valido"),

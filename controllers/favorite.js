@@ -7,7 +7,11 @@ const jwt = require("jsonwebtoken");
 
 const crearFavorite = async(req, res = response) => {
 
-     const { IdCharacter, IdUser, nameCharacter, caracterUrlImagen } = req.body;
+     const { IdCharacter, IdUser, nameCharacter, caracterUrlImagen } = req.body; //! Destructuracion
+
+     //! req.body.IdCharacter = IdCharacter;
+        //! req.body.IdUser = IdUser;
+            
     
      
      let valorBody = {
@@ -22,6 +26,9 @@ const crearFavorite = async(req, res = response) => {
 
 
         // verificar si el usuario ya tiene agregado el mismo id del personaje
+        //!Favorito: Rick, usuario 1
+        //! Favorito Rick, usuario 2
+
          const favorite = await Favorite.findOne({ IdCharacter, IdUser})
          
         if (favorite) {
@@ -66,7 +73,7 @@ const mostrarFavoritos = async(req, res = response) => {
     
             return res.json({
                 ok: true,
-                favoritos
+                favoritos //! favoritos: favoritos
             })
     
         } catch (error) {
