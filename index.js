@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require('path');
 const { dbConexion } = require('./db/config');
 //Es para que tome la configuracion por defecto y lee el archivo de .env
 require('dotenv').config() //! lee el archivo .env
@@ -29,17 +30,17 @@ app.use(express.json()) //! Puedo leer archivos JSON
 //que se ejecuta cuando el intérprete pase evaluando cada una de las líneas de código.
 
 //RUTAS DE LAS PETICIONES: GET, POST, PUT
-//Usuario
+//! Usuario
 //! Familia de rutas
 app.use('/api/auth', require('./routes/auth'));
 
-//Favorito
+//! Favorito
 app.use('/api/favorite', require('./routes/favorite'));
 
 //! PARA QUE TOME EL PUBLIC CON EL ARCHIVO DEL FRONTEND
 
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'public/index.html'))
+    res.sendFile(path.resolve(__dirname, 'public/index-fake.html'))
 })
 
 

@@ -66,10 +66,13 @@ const crearFavorite = async(req, res = response) => {
 
 const mostrarFavoritos = async(req, res = response) => {
     
-        const {idUser} = req.params.idUser;
+        const idUser = req.params.idUser;
+        console.log('ID DEL USUARIO '+ idUser)
         try {
     
-            const favoritos = await Favorite.find({idUser });
+            const favoritos = await Favorite.find({"IdUser":idUser });
+            console.log('ID DEL USUARIO '+ favoritos)
+            
     
             return res.json({
                 ok: true,

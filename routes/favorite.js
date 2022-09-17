@@ -9,8 +9,9 @@ const router = Router();
 
 //POST
 //controlador de esa ruta
-//crear un nuevo favorito
 //!Estructura: URL --> VALIDACIONES --> CONTROLADOR --> RESPUESTA
+
+//! crear un nuevo favorito
 router.post('/newFavorite', [
     
     validarJWT,
@@ -35,7 +36,7 @@ router.post('/newFavorite', [
 ], crearFavorite);
 
 //POST
-//Listar favorito
+//! Listar favorito
  router.get('/:idUser', [
      //check('token')
      //.notEmpty().withMessage('Es token es obligatorio'),

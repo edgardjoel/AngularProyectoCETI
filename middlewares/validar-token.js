@@ -4,7 +4,8 @@ const jwt = require("jsonwebtoken");
 const validarJWT = (req,res=response,next)=>{
   
   // const token = req.header('x-token');
-  const {token } = req.body;
+
+  const {token } = req.body; //! Destructuracion ---_> const token = req.body.token
 
   console.log('El token esta '+token)
 
