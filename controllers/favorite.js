@@ -29,7 +29,8 @@ const crearFavorite = async(req, res = response) => {
         //!Favorito: Rick, usuario 1
         //! Favorito Rick, usuario 2
 
-         const favorite = await Favorite.findOne({ IdCharacter, IdUser})
+         //const favorite = await Favorite.findOne({ IdCharacter, IdUser})
+         const favorite = await Favorite.findOne({ IdCharacter:IdCharacter, IdUser:IdUser})
          
         if (favorite) {
             return res.status(400).json({
@@ -91,6 +92,7 @@ const mostrarFavoritos = async(req, res = response) => {
 const eliminarFavoritos = async(req, res = response) => {
     
   const {IdCharacter,IdUser} = req.body
+  console.log('CAPTURED')
   console.log(req.body)
   try {
 

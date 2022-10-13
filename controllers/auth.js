@@ -18,7 +18,7 @@ const crearUsuario = async(req, res = response) => {
         if (usuario) {
             return res.status(400).json({
                 ok: false,
-                msg: 'El usuario ya existe con ese email'
+                msg: 'Ya hay un usuario que existe con ese email'
             })
         }
 
@@ -85,7 +85,7 @@ const loginUsuario = async(req, res) => {
             ok: true,
             uid: dbUser.id,
             name: dbUser.name,
-            token //! token = token
+            token //! token : token
         })
 
 
