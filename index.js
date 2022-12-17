@@ -10,7 +10,7 @@ require('dotenv').config() //! lee el archivo .env
 // console.log(process.env);
 
 //Crear servidor/aplicacion de express
-const app = express();
+const app = express(); //! Nodejs Framework -> MVC
 
 
 //Base de datos
@@ -20,7 +20,9 @@ dbConexion(); //! Conexion a la base de datos
 app.use(express.static('public')); //! La carpeta public se use como default para recursos estaticos
 
 //CORS
-app.use(cors()); //! Use cors, y se pueden filtrar origenes de peticiones
+app.use(cors(
+    //! DOMINIO: .restaurantx.com
+)); //! Use cors, y se pueden filtrar origenes de peticiones
 
 
 //Lectura del Body

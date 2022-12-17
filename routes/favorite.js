@@ -44,6 +44,7 @@ router.post('/newFavorite', [
  ], mostrarFavoritos);
 
 
+ //! QUITAR FAVORITOS
  router.delete('/deleteFavorite',[
   check('IdCharacter')
   .notEmpty().withMessage('El Id del personaje es obligatorio'),

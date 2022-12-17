@@ -61,7 +61,6 @@ const loginUsuario = async(req, res) => {
         const dbUser = await Usuario.findOne({ email: email })
        console.log(dbUser);
         if (!dbUser) {
-          console.log(dbUser, "pasoo");
             return res.status(400).json({
                 ok: false,
                 msg: 'Su cuenta no existe'
@@ -70,11 +69,11 @@ const loginUsuario = async(req, res) => {
 
         //Confirmar si el password hace match con la base de datos, devuelve true o false
         const validPassword = bcrypt.compareSync(password, dbUser.password);
-        console.log(!validPassword);
+        // console.log(!validPassword);
         if (!validPassword) {
             return res.status(400).json({
                 ok: false,
-                smg: 'Contraseña incorrecta'
+                msg: 'Contraseña incorrecta'
             });
         }
         //Generar el jwt
@@ -91,7 +90,7 @@ const loginUsuario = async(req, res) => {
 
     } catch (error) {
         console.log(error);
-        return res.status(500).json({
+        return res.status(500).json({ //! 500: FALLAS EN EL SERVIDOR
             ok: false,
             msg: "Hable con el administrador"
         })

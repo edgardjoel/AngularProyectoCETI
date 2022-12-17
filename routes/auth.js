@@ -8,7 +8,8 @@ const router = Router();
 
 //POST
 //controlador de esa ruta
-//crear un nuevo usuario
+//! crear un nuevo usuario
+//! /api/auth/new
 router.post('/new', [
 
     check('name')
@@ -37,6 +38,7 @@ router.post('/new', [
 
 //POST
 //! Login de usuario
+//! /api/auth
 router.post('/', [
 
     check('email')
