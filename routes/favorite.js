@@ -37,6 +37,7 @@ router.post('/newFavorite', [
 
 //POST
 //! Listar favorito
+//! api/favorite/assdfsdfw9fehwer9gf
  router.get('/:idUser', [
      //check('token')
      //.notEmpty().withMessage('Es token es obligatorio'),

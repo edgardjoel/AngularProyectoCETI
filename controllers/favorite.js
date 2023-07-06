@@ -96,7 +96,7 @@ const eliminarFavoritos = async(req, res = response) => {
   console.log(req.body)
   try {
 
-      const favoritos = await Favorite.deleteOne({IdCharacter,IdUser});
+      const favoritos = await Favorite.deleteOne({IdCharacter,IdUser});//! DEBERIA HACERSE ES UNA ELIMINACION LóGICA
 
       if (favoritos.deletedCount === 1) {
         return res.status(200).json({
