@@ -1,0 +1,3 @@
+npm init --y
+npm i bcryptjs cors dotenv
+npm i -D nodemon

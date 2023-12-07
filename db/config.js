@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose"); //! MONGOOSE, SENCILLA LA SINTAXIS DE MONGODB
 
 const dbConexion = async() => {
     try {
-        await mongoose.connect(process.env.BD_CNN);
+        await mongoose.connect(process.env.BD_CNN); //! DIRECCIÓN DE LA BD
         console.log('DB se conectó bien')
     } catch (error) {
         console.log(error);

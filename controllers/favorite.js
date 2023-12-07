@@ -27,7 +27,7 @@ const crearFavorite = async(req, res = response) => {
 
         // verificar si el usuario ya tiene agregado el mismo id del personaje
         //!Favorito: Rick, usuario 1
-        //! Favorito Rick, usuario 2
+        //! Favorito Morty, usuario 1
 
          //const favorite = await Favorite.findOne({ IdCharacter, IdUser})
          const favorite = await Favorite.findOne({ IdCharacter:IdCharacter, IdUser:IdUser})
@@ -48,9 +48,7 @@ const crearFavorite = async(req, res = response) => {
         //Generar respuesta exitosa
         return res.status(201).json({
             ok: true,
-            // uid: dbUser.id,
-            // name: dbUser.name,
-            // token: token
+            
         })
 
     } catch (error) {

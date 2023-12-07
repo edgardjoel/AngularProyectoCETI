@@ -9,12 +9,12 @@ const router = Router();
 //POST
 //controlador de esa ruta
 //! crear un nuevo usuario
-//! /api/auth/new
+//* /api/auth/new
 router.post('/new', [
 
     check('name')
     .notEmpty().withMessage('El nombre es obligatorio')
-    .isLength({ min: 6 }).withMessage('El name es mínimo de 6 caracteres'),
+    .isLength({ min: 1 }).withMessage('El name es mínimo de 6 caracteres'),
 
     check('email')
     .notEmpty().withMessage('El email es obligatorio')
@@ -28,9 +28,6 @@ router.post('/new', [
     .notEmpty().withMessage('El rol es obligatorio')
     .isLength({ min: 1 }).withMessage('El rol es mínimo de 1 caracter'),
 
-    check('estado')
-    .notEmpty().withMessage('El estado es obligatorio')
-    .isLength({ min: 1 }).withMessage('El estado es mínimo de 1 caracter'),
 
     validarCampos
 
