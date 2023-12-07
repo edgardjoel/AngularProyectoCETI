@@ -40,7 +40,7 @@ router.post('/', [
 
     check('email')
     .notEmpty().withMessage('El email es obligatorio')
-    .isEmail().withMessage("Email ingresado no es valido"),
+    .isEmail().withMessage("Email ingresado no cumple con el formato"),
 
     check('password')
     .notEmpty().withMessage('La contraseña es obligatoria')

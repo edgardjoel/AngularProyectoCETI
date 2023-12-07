@@ -53,7 +53,7 @@ const crearUsuario = async(req, res = response) => {
 
 const loginUsuario = async(req, res) => {
 
-    const { email, password } = req.body;
+    const { email, password } = req.body; //! DESTRUCTURACIÓN
     //* const email = req.body.email
     //* const password = req.body.password
     try {
