@@ -47,8 +47,7 @@ const crearFavorite = async(req, res = response) => {
         await dbFavorite.save();
         //Generar respuesta exitosa
         return res.status(201).json({
-            ok: true,
-            
+            ok: true,  
         })
 
     } catch (error) {
@@ -69,13 +68,12 @@ const mostrarFavoritos = async(req, res = response) => {
         console.log('ID DEL USUARIO '+ idUser)
         try {
     
-            const favoritos = await Favorite.find({"IdUser":idUser });
-            console.log('ID DEL USUARIO '+ favoritos)
+            const favorites = await Favorite.find({"IdUser":idUser });
             
     
             return res.json({
                 ok: true,
-                favoritos //! favoritos: favoritos
+                favorites //! favoritos: favoritos
             })
     
         } catch (error) {
